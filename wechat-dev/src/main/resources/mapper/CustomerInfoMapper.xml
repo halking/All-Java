@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.d1m.wechat.mapper.CustomerInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.d1m.wechat.model.CustomerInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="appid" property="appid" jdbcType="VARCHAR" />
+    <result column="appkey" property="appkey" jdbcType="VARCHAR" />
+    <result column="wechat_id" property="wechatId" jdbcType="INTEGER" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+</mapper>

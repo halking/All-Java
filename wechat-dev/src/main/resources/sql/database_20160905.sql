@@ -1,0 +1,1 @@
+ALTER TABLE `menu` ADD COLUMN `seq` int(11) COMMENT '顺序';

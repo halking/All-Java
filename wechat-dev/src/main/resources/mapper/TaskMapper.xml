@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.d1m.wechat.mapper.TaskMapper" >
+  <resultMap id="BaseResultMap" type="com.d1m.wechat.model.Task" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cate_id" property="cateId" jdbcType="INTEGER" />
+    <result column="task_name" property="taskName" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="stateful" property="stateful" jdbcType="TINYINT" />
+    <result column="cron_expression" property="cronExpression" jdbcType="VARCHAR" />
+    <result column="last_exec_error" property="lastExecError" jdbcType="LONGVARCHAR" />
+    <result column="last_exec_status" property="lastExecStatus" jdbcType="TINYINT" />
+    <result column="last_exec_time" property="lastExecTime" jdbcType="TIMESTAMP" />
+    <result column="next_exec_time" property="nextExecTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="params" property="params" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <resultMap id="CategoryResultMap" type="com.d1m.wechat.dto.TaskCategoryDto" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cate_name" property="cateName" jdbcType="VARCHAR" />
+    <result column="task_class" property="taskClass" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="params" property="params" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <resultMap id="TaskResultMap" type="com.d1m.wechat.dto.TaskDto" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cate_id" property="cateId" jdbcType="INTEGER" />
+    <result column="task_name" property="taskName" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="stateful" property="stateful" jdbcType="TINYINT" />
+    <result column="cron_expression" property="cronExpression" jdbcType="VARCHAR" />
+    <result column="last_exec_status" property="lastExecStatus" jdbcType="TINYINT" />
+    <result column="last_exec_time" property="lastExecTime" jdbcType="TIMESTAMP" />
+    <result column="next_exec_time" property="nextExecTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="params" property="params" jdbcType="LONGVARCHAR" />
+    <association property="taskCategory" column="{id=cate_id}" select="getTaskCategory"/>
+  </resultMap>
+  
+  <select id="getTaskById" parameterType="HashMap" resultMap="TaskResultMap">
+	SELECT
+		*
+	FROM
+		task
+	WHERE
+		id = #{id}
+  </select>
+  
+  <select id="getAllTask" parameterType="HashMap" resultMap="TaskResultMap">
+	SELECT
+		*
+	FROM
+		task
+  </select>
+  
+  <select id="getTaskCategory" parameterType="HashMap" resultMap="CategoryResultMap">
+	SELECT
+		*
+	FROM
+		task_category
+	WHERE
+		id = #{id}
+  </select>
+</mapper>
