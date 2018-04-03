@@ -36,6 +36,5 @@ target/
 /attached/
 /src/main/profile/dev/
 /src/test/profile/dev/
-*.iml
 .local
 
